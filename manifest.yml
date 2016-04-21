@@ -15,4 +15,3 @@ applications:
   buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
   services:
   - freshPotatesSQL
-  
