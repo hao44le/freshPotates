@@ -15,4 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-/public/systems/movies/images
+/public/system/movies/images
