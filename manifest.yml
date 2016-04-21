@@ -1,0 +1,17 @@
+declared-services:
+  freshPotatesSQL:
+    label: elephantsql
+    plan: turtle
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: mybluemix.net
+  command: "bundle exec rake db:migrate && bundle exec rails s -p $PORT"
+  stack: cflinuxfs2
+  name: freshPotates
+  host: freshPotates
+  disk_quota: 1024M
+  buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
+  services:
+  - freshPotatesSQL
