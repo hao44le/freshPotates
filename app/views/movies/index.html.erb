@@ -1,7 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Movies</h1>
-
+<% if !user_signed_in? %>
+    <div class="jumbotron">
+      <h1>Your Favorite Movies Reviewed</h1>
+      <p>Please Sign in or sign up.</p>
+      <p><%= link_to "Sign Up To Write A Review", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
+    </div>
+<% end %>
 <table>
   <thead>
     <tr>
