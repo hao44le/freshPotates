@@ -2,11 +2,6 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :set_movie
   before_action :authenticate_user!
-  # GET /reviews
-  # GET /reviews.json
-
-  # GET /reviews/1
-  # GET /reviews/1.json
 
   # GET /reviews/new
   def new
@@ -30,6 +25,7 @@ class ReviewsController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   # PATCH/PUT /reviews/1
@@ -57,16 +53,17 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_review
+    @review = Review.find(params[:id])
+  end
 
-    def set_movie
-      @movie = Movie.find(params[:movie_id])
-    end
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def review_params
-      params.require(:review).permit(:rating, :comment)
-    end
+  def set_movie
+    @movie = Movie.find(params[:movie_id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def review_params
+    params.require(:review).permit(:rating, :comment)
+  end
 end

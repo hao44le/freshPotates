@@ -1,8 +1,8 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
-  # GET /movies
-  # GET /movies.json
+
+
   def search
     if params[:search].present?
       @movies = Movie.search(params[:search])
@@ -15,8 +15,6 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
-  # GET /movies/1
-  # GET /movies/1.json
   def show
     @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
 
@@ -27,17 +25,13 @@ class MoviesController < ApplicationController
     end
   end
 
-  # GET /movies/new
   def new
     @movie = current_user.movies.build
   end
 
-  # GET /movies/1/edit
   def edit
   end
 
-  # POST /movies
-  # POST /movies.json
   def create
     @movie = current_user.movies.build(movie_params)
 
@@ -52,8 +46,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /movies/1
-  # PATCH/PUT /movies/1.json
   def update
     respond_to do |format|
       if @movie.update(movie_params)
@@ -66,8 +58,6 @@ class MoviesController < ApplicationController
     end
   end
 
-  # DELETE /movies/1
-  # DELETE /movies/1.json
   def destroy
     @movie.destroy
     respond_to do |format|
@@ -77,13 +67,13 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def movie_params
+    params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
+  end
 end
