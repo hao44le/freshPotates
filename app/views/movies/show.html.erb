@@ -55,7 +55,8 @@
   </div>
 <div class="links">
   <%= link_to 'Edit', edit_movie_path(@movie) %> |
-  <%= link_to 'Back', movies_path %>
+  <%= link_to 'Back', movies_path %> |
+  <%= link_to 'Delete', movie_path(@movie), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
   <script>
     $('.star-rating').raty({
