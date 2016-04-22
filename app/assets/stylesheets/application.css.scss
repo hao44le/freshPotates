@@ -132,7 +132,7 @@ p{
 }
 
 .submitButton {
-  background: white;
+  background: $dark;
   outline: none;
   border: none;
   height: 40px;
@@ -144,10 +144,10 @@ p{
   display: inline-block;
   transition: all .4s ease-in-out;
   cursor: pointer;
-  color: $dark;
+  color: white;
   &:hover {
-    background: $dark;
-    color: white;
+    background: white;
+    color: $dark;
   }
 }
 
