@@ -73,6 +73,7 @@ input[type="submit"] {
     background: $dark;
     color: white;
   }
+
 }
 .inputField input[type="text"], textarea {
   width: 100%;
@@ -84,6 +85,21 @@ input[type="submit"] {
   height: 40px;
   border-radius: 4px;
   padding: 1em 2em;
+}
+
+.inputField input[type="file"]{
+  margin: .5em 2% 1em 0;
+  outline: none;
+  padding: 1em 2em;
+  color: $dark;
+}
+
+label {
+  color: $dark;
+}
+
+h1 {
+  color: $dark;
 }
 
 .submitButton {
