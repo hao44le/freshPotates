@@ -54,4 +54,51 @@ body {
 
 }
 
+input[type="submit"] {
+  background: white;
+  outline: none;
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  width: 25%;
+  display: inline-block;
+  transition: all .4s ease-in-out;
+  cursor: pointer;
+  color: $dark;
+  &:hover {
+    background: $dark;
+    color: white;
+  }
+}
+
+.submitButton {
+  background: white;
+  outline: none;
+  border: none;
+  height: 40px;
+  line-height:40px;
+  border-radius: 4px;
+  width: 40%;
+  text-align: center;
+
+  display: inline-block;
+  transition: all .4s ease-in-out;
+  cursor: pointer;
+  color: $dark;
+  &:hover {
+    background: $dark;
+    color: white;
+  }
+}
+
+.links {
+  display: block;
+  margin: 1.5em auto 0 auto;
+  text-align: center;
+  font-size: 0.8em;
+  color: white;
+  a {
+    color: white;
+  }
+}
 ::-webkit-input-placeholder { color: $dark; }
