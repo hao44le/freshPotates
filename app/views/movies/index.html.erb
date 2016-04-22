@@ -12,6 +12,13 @@
         <div class="thumbnail">
           <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
         </div>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <p><strong>Title:</strong><%= movie.title %></p>
+            </tbody>
+          </table>
+        </div>
       </div>
   <% end %>
 </div>
