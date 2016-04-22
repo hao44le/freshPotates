@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419034215) do
+ActiveRecord::Schema.define(version: 20160422020524) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160419034215) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
