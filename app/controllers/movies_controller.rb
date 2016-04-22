@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
 
   def search
     if params[:search].present?
-      @movies = Movie.search(params[:search])
+      @movies = Movie.search_rating(params[:search])
     else
       @movies = Movie.all
     end
