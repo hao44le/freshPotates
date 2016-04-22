@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
 
   def search
     if params[:search].present?
-      @movies = Movie.where("title like ?","%#{params[:search]}%").order("created_at DESC")
+      @movies = Movie.where("LOWER(title) LIKE ?","%#{params[:search]}%").order("created_at DESC")
     else
       @movies = Movie.all
     end
