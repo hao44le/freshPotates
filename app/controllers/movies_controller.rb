@@ -2,10 +2,9 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-
   def search
     if params[:search].present?
-      @movies = Movie.search(params[:search])
+      @movies = Movie.where("LOWER(title) LIKE ?","%#{params[:search]}%").order("created_at DESC")
     else
       @movies = Movie.all
     end
@@ -21,7 +20,12 @@ class MoviesController < ApplicationController
     if @reviews.blank?
       @avg_review = 0
     else
-      @avg_review = @reviews.average(:rating).round(2)
+      if @reviews.average(:rating) != nil
+        @avg_review = @reviews.average(:rating).round(2)
+      else
+        @avg_review = 0
+      end
+
     end
   end
 
