@@ -39,6 +39,21 @@ body {
 .panel-heading {
   color: #000000;
 }
+
+.nav-center {  
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 25px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  ul.nav {
+    display: inline-block;
+    li {
+      display: inline
+      a {
+        float: left
+      }
+    }
+  }
+}
+
 .review_title {
     margin: 0 0 20px 0;
 }

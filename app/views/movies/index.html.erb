@@ -1,17 +1,20 @@
 <% if !user_signed_in? %>
 <div class="jumbotron">
-  <h1>Your Favorite Movies Reviewed</h1>
+<div class="fadeInDown animated">
+    <h1>Your Favorite Movies Reviewed</h1>
+  </div>
   <p>Please Sign in or sign up.</p>
   <div class="container fadeInUp animated">
     <p><%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-primary btn-lg" %></p>
   </div>
+  
 </div>
 <% end %>
 
 
 <div class="row">
   <% @movies.each do |movie| %>
-  <div class="pulse animated">
+  <div class="fadeIn animated">
     <div class="col-sm-6 col-md-3">
       <div class="thumbnail">
         <%= link_to (image_tag movie.image.url(:medium), class: 'image'), movie %>
