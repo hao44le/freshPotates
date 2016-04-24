@@ -4,6 +4,7 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
+<div class="inputField">
   <div class="field">
     <%= f.label :password, "New password" %><br />
     <% if @minimum_password_length %>
@@ -20,6 +21,10 @@
   <div class="actions">
     <%= f.submit "Change my password" %>
   </div>
+</div>
 <% end %>
 
+<br>
+<div class="bigger" style="font-size: 18px;">
 <%= render "devise/shared/links" %>
+</div>
