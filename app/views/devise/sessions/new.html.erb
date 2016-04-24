@@ -1,6 +1,7 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
 <div class="inputField">
   <div class="field">
     <%= f.label :email %><br />
@@ -25,6 +26,12 @@
 </div>
 <% end %>
 <br>
-<div class="bigger" style="font-size: 16px;">
-  <%= render "devise/shared/links" %>
+<div class="bigger" style="font-size: 15px;">
+  <div class="panel panel-custom" style="padding: 10px;">
+    <div class="panel-heading" style="padding: 10px">Options</div>
+    <div style="padding: 10px">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
 </div>
+

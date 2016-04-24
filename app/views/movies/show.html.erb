@@ -57,15 +57,15 @@
 </div>
 
 <div class="links">
-  <div class="panel panel-default">
-  <div class="panel-heading">Options</div>
-  <% if logged_in? and (@movie.user == current_user) %>
-  <div class="btn-group" role="group" aria-label="...">
-    <%= link_to '  ', edit_movie_path(@movie), class:"glyphicon glyphicon-pencil", style:"color:#000000; padding:30px;"%> 
-    <%= link_to '  ', movie_path(@movie), class:"glyphicon glyphicon-remove", style:"color:#000000; padding:30px;", method: :delete, data: { confirm: "Are you sure?" } %>
-    <%end%>
-    <%= link_to '  ', movies_path, class:"glyphicon glyphicon-arrow-left", style:"color:#000000; padding:30px;" %>
-  </div>
+  <div class="panel panel-custom">
+    <div class="panel-heading">Options</div>
+    <% if logged_in? and (@movie.user == current_user) %>
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to '  ', edit_movie_path(@movie), class:"glyphicon glyphicon-pencil", style:"color:#000000; padding:30px;"%> 
+      <%= link_to '  ', movie_path(@movie), class:"glyphicon glyphicon-remove", style:"color:#000000; padding:30px;", method: :delete, data: { confirm: "Are you sure?" } %>
+      <%end%>
+      <%= link_to '  ', movies_path, class:"glyphicon glyphicon-arrow-left", style:"color:#000000; padding:30px;" %>
+    </div>
   </div>
 </div>
 
