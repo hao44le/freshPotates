@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
     end
     # url = 'https://api.spotify.com/v1/search?type=artist&q=tycho'
     url = 'https://www.tastekid.com/api/similar?k=220728-FreshPot-PU3AOZ57&limit=40&type=movies&info=1&'
-    url += 'q=movie:' + @movie.title
+    url += 'q=movie:' + @movie.title.gsub(/\s+/, "")
     # url += 'q=red+hot+chili+peppers%2C+pulp+fiction'
     response = HTTParty.get(url)
     
