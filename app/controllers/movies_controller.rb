@@ -1,3 +1,4 @@
+# require 'httparty'
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
@@ -27,6 +28,14 @@ class MoviesController < ApplicationController
       end
 
     end
+    # url = 'https://api.spotify.com/v1/search?type=artist&q=tycho'
+    url = 'https://www.tastekid.com/api/similar?k=220728-FreshPot-PU3AOZ57&limit=40&type=movies&info=1&'
+    url += 'q=movie:' + @movie.title
+    # url += 'q=red+hot+chili+peppers%2C+pulp+fiction'
+    response = HTTParty.get(url)
+    
+    # @suggestions =response
+    @suggestions = JSON.parse(response.body)["Similar"]["Results"]
   end
 
   def new

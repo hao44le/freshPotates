@@ -29,6 +29,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'searchkick', '~> 1.1', '>= 1.1.2'
 gem "cf-autoconfig", "~> 0.2.1"
 gem 'rails_12factor', group: :production
+gem 'httparty', '~> 0.13.7'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -32,6 +32,10 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+h3 {
+  color:#1F7972;
+}
+
 .panel-custom {
      background-color: #C9E3E3;  
 }
@@ -40,9 +44,27 @@ body {
   color: #000000;
 }
 
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+
 .nav-center {  
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 25px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  ul.nav {
+    display: inline-block;
+    li {
+      display: inline
+      a {
+        float: left
+      }
+    }
+  }
+}
+
+.nav-center-custom {  
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 25px 0 rgba(0, 0, 0, 0.19);
   ul.nav {
     display: inline-block;
     li {

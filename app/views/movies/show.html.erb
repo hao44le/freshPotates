@@ -1,64 +1,103 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag @movie.image.url(:medium) %>
-        <div class="star-rating" data-score= <%= @avg_review %> ></div>
-        <em><%= "#{@reviews.length} reviews" %></em>
-        <div class="table-responsive">
-          <table class="table">
-            <tbody>
-              <tr>
-                <td><strong>Title:</strong></td>
-                <td><%= @movie.title %></td>
-              </tr>
-              <tr>
-                <td><strong>Description:</strong></td>
-                <td><%= @movie.description %></td>
-              </tr>
-              <tr>
-                <td><strong>Movie Length:</strong></td>
-                <td><%= @movie.movie_length %></td>
-              </tr>
-              <tr>
-                <td><strong>Director:</strong></td>
-                <td><%= @movie.director %></td>
-              </tr>
-              <tr>
-                <td><strong>Rating:</strong></td>
-                <td><%= @movie.rating %></td>
-              </tr>
-            </tbody>
-          </table>
-          <% if logged_in? %>
-          <%= link_to "Write a Review", new_movie_review_path(@movie), class: "submitButton" %>
+<!-- require 'httparty'
+ 
+url = 'https://api.spotify.com/v1/search?type=artist&q=tycho'
+response = HTTParty.get(url)
+response.parsed_response 
+http://i.ytimg.com/vi/ + videoID + /default.jpg -->
+
+<div class="bounceInUp animated">
+  <div class="nav-center-custom">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <%= image_tag @movie.image.url(:medium) %>
+            <div class="star-rating" data-score= <%= @avg_review %> ></div>
+            <em><%= "#{@reviews.length} reviews" %></em>
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><strong>Title:</strong></td>
+                    <td><%= @movie.title %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Description:</strong></td>
+                    <td><%= @movie.description %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Movie Length:</strong></td>
+                    <td><%= @movie.movie_length %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Director:</strong></td>
+                    <td><%= @movie.director %></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Rating:</strong></td>
+                    <td><%= @movie.rating %></td>
+                  </tr>
+                </tbody>
+              </table>
+              <% if logged_in? %>
+              <%= link_to "Write a Review", new_movie_review_path(@movie), class: "submitButton" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+            <h1 class="review_title"><%= @movie.title %></h1>
+            <p><%= @movie.description %></p>
+
+            <% if logged_in? and @reviews.blank? %>
+            <h3>No reviews just yet, would you like to add the first?</h3>
+            <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-primary" %>
+            <% else %>
+            <% @reviews.each do |review| %>
+            <div class="reviews">
+              <div class="star-rating" data-score= <%= review.rating %></div>
+              <p><%= review.comment %></p>
+            </div>
+          </div>
+          <% end %>
           <% end %>
         </div>
       </div>
-      <div class="col-md-7 col-md-offset-1">
-        <h1 class="review_title"><%= @movie.title %></h1>
-        <p><%= @movie.description %></p>
-
-        <% if logged_in? and @reviews.blank? %>
-        <h3>No reviews just yet, would you like to add the first?</h3>
-        <%= link_to "Write Review", new_movie_review_path(@movie), class: "btn btn-primary" %>
-        <% else %>
-        <% @reviews.each do |review| %>
-        <div class="reviews">
-          <div class="star-rating" data-score= <%= review.rating %></div>
-          <p><%= review.comment %></p>
-        </div>
-      </div>
-      <% end %>
-      <% end %>
     </div>
   </div>
 </div>
 </div>
 
-<div class="links">
-<div class="fadeInDown animated">
+<div class="bounceInUp animated">
   <div class="nav-center">
+    <div class="panel panel-default" style="background-color: #C9E3E3;"> 
+      <div class="panel-heading"><h3>You may also like...</h3></div>
+      <div class="row">
+        <div class="movies" style="padding:20px">
+          <div class="custom-scrollable">
+            <% @suggestions.take(8).each do |suggestion| %>
+
+            <div class="col-xs-5 col-md-4">
+              <div class="thumbnail" style="background-color: #C9E3E3; padding-top: 25px;">
+                <a href= <%= suggestion['yUrl'] %>>
+                  <img style=" height: 58%; width: 58%" src=<%= 'http://i.ytimg.com/vi/' + suggestion['yID'] + '/default.jpg' %>>
+                </a>
+                <div class="caption" style="font-size:15px"> 
+                  <strong><p> <%= suggestion['Name'] %> </p></strong>
+                </div>
+              </div>
+
+            </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="links">
+  <div class="fadeInDown animated">
+    <div class="nav-center">
       <div class="panel panel-default" style="background-color: #C9E3E3;">
         <div class="panel-heading">Options</div>
         <ul class="nav nav-pills" style="padding-top: 9px; ">
@@ -77,10 +116,10 @@
 
 <script>
   $('.star-rating').raty({
-  path: '/assets/',
-  readOnly: true,
-  score: function() {
-  return $(this).attr('data-score');
-}
-})
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  })
 </script>
